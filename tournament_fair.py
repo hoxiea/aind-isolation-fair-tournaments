@@ -115,20 +115,13 @@ def run_fair_tournament(cpu_agents, test_agents, num_matches):
 def main():
     """Run a tournament between test_agents and cpu_agents."""
 
-    RUN_DESCR = "All improved_score, Board.get_legal_moves unshuffled - tournament_fair"
-
     # Define two agents to compare -- these agents will play from the same
     # starting position against the same adversaries in the tournament
     test_agents = [
         Agent(AlphaBetaPlayer(score_fn=improved_score), "AB_Improved"),
-        Agent(AlphaBetaPlayer(score_fn=improved_score), "AB_Improved"),
-        Agent(AlphaBetaPlayer(score_fn=improved_score), "AB_Improved"),
-        Agent(AlphaBetaPlayer(score_fn=improved_score), "AB_Improved"),
-
-        #### Using various custom_score functions
-        # Agent(AlphaBetaPlayer(score_fn=custom_score), "AB_Custom"),
-        # Agent(AlphaBetaPlayer(score_fn=custom_score_2), "AB_Custom_2"),
-        # Agent(AlphaBetaPlayer(score_fn=custom_score_3), "AB_Custom_3")
+        Agent(AlphaBetaPlayer(score_fn=custom_score), "AB_Custom"),
+        Agent(AlphaBetaPlayer(score_fn=custom_score_2), "AB_Custom_2"),
+        Agent(AlphaBetaPlayer(score_fn=custom_score_3), "AB_Custom_3")
     ]
 
     # Define a collection of agents to compete against the test agents
@@ -142,7 +135,6 @@ def main():
         Agent(AlphaBetaPlayer(score_fn=improved_score), "AB_Improved")
     ]
 
-    print("\n" + RUN_DESCR)
     run_fair_tournament(cpu_agents, test_agents, NUM_MATCHES)
 
 
